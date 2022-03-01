@@ -1,5 +1,4 @@
 import React from 'react'
-
 import moment from 'moment'
 
 const PostDetail = ({ post }) => {
@@ -49,6 +48,19 @@ const PostDetail = ({ post }) => {
         return (
           <img key={index} alt={obj.title} height={obj.height} width={obj.width} src={obj.src} />
         )
+      case 'list-item':
+        return (
+          <li key={index} className='mb-4'>
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </li>
+        )
+      case 'iframe':
+        return (
+          <iframe key={index} src={obj.src} width={obj.width} height={obj.height} frameBorder='0' />
+        )
+
       default:
         return modifiedText
     }
@@ -71,7 +83,7 @@ const PostDetail = ({ post }) => {
                 alt={post.author.name}
                 height='30px'
                 width='30px'
-                className='align-middle rounded-full'
+                className='rounded-full'
                 src={post.author.photo.url}
               />
               <p className='inline align-middle text-gray-700 ml-2 font-medium text-lg'>
@@ -81,7 +93,7 @@ const PostDetail = ({ post }) => {
             <div className='font-medium text-gray-700'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6 inline mr-2 text-orange-500'
+                className='h-6 w-6 inline mr-2 text-pink-500'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
